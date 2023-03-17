@@ -1,7 +1,7 @@
 //Import guitarBuilder function
 import { Outlet, Route, Routes } from "react-router-dom";
 import { GuitarBuilder } from "../guitars/guitarBuilder"
-
+import { DisplayMyGuitar } from "../guitars/myGuitars";
 
 export const ApplicationViews = () => {
 	return (
@@ -18,6 +18,7 @@ export const ApplicationViews = () => {
 
             
         <Route path="/builder" element={ <GuitarBuilder />} />
+		<Route path="/myguitars" element={ <DisplayMyGuitar />} />
 
       </Route>
     </Routes>
