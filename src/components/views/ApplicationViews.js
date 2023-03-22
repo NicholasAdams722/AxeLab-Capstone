@@ -2,7 +2,8 @@
 import { Outlet, Route, Routes } from "react-router-dom";
 import { GuitarBuilder } from "../guitars/guitarBuilder"
 import { DisplayMyGuitar } from "../guitars/myGuitars";
-
+import {GuitarSearch} from "../guitars/guitarSearch"
+import { GuitarContainer } from "../guitars/guitarContainer";
 export const ApplicationViews = () => {
 	return (
 <Routes>
@@ -17,9 +18,10 @@ export const ApplicationViews = () => {
         } >
 
             
-        <Route path="/builder" element={ <GuitarBuilder />} />
-		<Route path="/myguitars" element={ <DisplayMyGuitar />} />
-
+		<Route path="/myguitars" element={ <GuitarContainer />
+    } />
+    
+    <Route path="/builder" element={ <GuitarBuilder />} />
       </Route>
     </Routes>
   );
