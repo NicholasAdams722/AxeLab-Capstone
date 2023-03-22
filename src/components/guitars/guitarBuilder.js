@@ -12,7 +12,11 @@ export const GuitarBuilder = () => {
   const [neckShape, setNeckShape] = useState([]);
   const [neckWoodType, setNeckWoodType] = useState([]);
   const [hardwareType, setHardware] = useState([]);
+  
   const navigate = useNavigate();
+
+  const localGuitarUser =localStorage.getItem("guitar_user")
+  const guitarUserObject = JSON.parse(localGuitarUser)
 
   //Use state for new guitar object
   const [newGuitar, update] = useState({
@@ -22,6 +26,8 @@ export const GuitarBuilder = () => {
     neckShapeId: 0,
     neckWoodTypeId: 0,
     hardwareTypeId: 0,
+    newGuitarPrice: 0,
+   //Should logic for guitar price go here?
   });
 
   //Body Style
@@ -80,12 +86,14 @@ export const GuitarBuilder = () => {
     // TODO: Create the object to be saved to the API
     const guitarToSendToAPI = {
       //Check if this matches with JSX
+      userId: guitarUserObject.id,
       guitarName: newGuitar.name,
       bodyStyleId: newGuitar.bodyStyleId,
       bodyWoodTypeId: newGuitar.bodyWoodTypeId,
       neckShapeId: newGuitar.neckShapeId,
       neckWoodTypeId: newGuitar.neckWoodTypeId,
-      hardwareTypeId: newGuitar.hardwareId,
+      hardwareTypeId: newGuitar.hardwareTypeId,
+      guitarPrice: newGuitar.newGuitarPrice
     };
 
     //! This fetch POSTS the new object to the products array in the API
@@ -118,7 +126,7 @@ export const GuitarBuilder = () => {
               placeholder="Your Guitar Name"
               value={guitarName.name}
               onChange={(evt) => {
-                const copy = { ...guitarName };
+                const copy = { ...newGuitar };
                 copy.name = evt.target.value;
                 update(copy);
               }}
@@ -133,6 +141,10 @@ export const GuitarBuilder = () => {
           onChange={(e) => {
             const copy = { ...newGuitar };
             copy.bodyStyleId = parseInt(e.target.value);
+            const selectedBodyStyle = bodyStyle.find((bodyStyleObj) => {
+              return copy.bodyStyleId === bodyStyleObj.id
+            })
+            copy.newGuitarPrice += selectedBodyStyle.price
             update(copy);
           }}
         >
@@ -154,6 +166,10 @@ export const GuitarBuilder = () => {
           onChange={(e) => {
             const copy = { ...newGuitar };
             copy.bodyWoodTypeId = parseInt(e.target.value);
+            const selectedBodyWoodType = bodyWoodType.find((bodyWoodTypeObj) => {
+              return copy.bodyWoodTypeId === bodyWoodTypeObj.id
+            })
+            copy.newGuitarPrice += selectedBodyWoodType.price
             update(copy);
           }}
         >
@@ -177,6 +193,10 @@ export const GuitarBuilder = () => {
           onChange={(e) => {
             const copy = { ...newGuitar };
             copy.neckShapeId = parseInt(e.target.value);
+            const selectedNeckShape = neckShape.find((neckShapeObj) => {
+              return copy.neckShapeId === neckShapeObj.id
+            })
+            copy.newGuitarPrice += selectedNeckShape.price
             update(copy);
           }}
         >
@@ -198,6 +218,10 @@ export const GuitarBuilder = () => {
           onChange={(e) => {
             const copy = { ...newGuitar };
             copy.neckWoodTypeId = parseInt(e.target.value);
+            const selectedNeckWoodType = neckWoodType.find((neckWoodTypeObj) => {
+              return copy.neckWoodTypeId === neckWoodTypeObj.id
+            })
+            copy.newGuitarPrice += selectedNeckWoodType.price
             update(copy);
           }}
         >
@@ -215,10 +239,14 @@ export const GuitarBuilder = () => {
         <h2>Hardware</h2>
 
         <select
-          value={newGuitar.hardwareId}
+          value={newGuitar.hardwareTypeId}
           onChange={(e) => {
             const copy = { ...newGuitar };
-            copy.hardwareId = parseInt(e.target.value);
+            copy.hardwareTypeId = parseInt(e.target.value);
+            const selectedHardwareType = hardwareType.find((hardwareTypeObj) => {
+              return copy.hardwareTypeId === hardwareTypeObj.id
+            })
+            copy.newGuitarPrice += selectedHardwareType.price
             update(copy);
           }}
         >
@@ -233,6 +261,9 @@ export const GuitarBuilder = () => {
           })}
         </select>
       </>
+
+
+
       <>
         <button
           onClick={(clickEvent) => handleGuitarButtonClick(clickEvent)}
