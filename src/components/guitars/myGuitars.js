@@ -23,7 +23,7 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
   }, []);
 
   useEffect(() => {
-    if (guitarUserObject.staff) {
+    if (guitarUserObject.isAdmin) {
       setNewGuitar(newGuitars);
     } else {
       const myGuitars = newGuitars.filter(
@@ -37,7 +37,9 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
     if (guitarTermState.length > 0) {
       console.log(myGuitars);
       const searchedGuitars = myGuitars.filter((myGuitar) =>
-        myGuitar.guitarName.startsWith(guitarTermState)
+        myGuitar.guitarName
+          .toLowerCase()
+          .startsWith(guitarTermState.toLowerCase())
       );
       setFilteredGuitars(searchedGuitars);
     } else {
@@ -71,12 +73,55 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
 
   //TODO Handle purchase button function
   const handlePurchaseButtonClick = () => {
-    alert("Congratulations! Your guitar has been purchased!");
+    alert(`Congratulations! Your guitar has been purchased`);
   };
 
-  //!May need to change newGuitar to filteredGuitar?
+  //TODO Create dropdown to sort by price high-to-low and low-to-high
   return (
     <>
+      <fieldset>
+        <select
+          className="sortChoice"
+          onChange={(evt) => {
+            const copy = [ ...filteredGuitars ];
+            
+           
+           if ( parseInt(evt.target.value) === 1 ) {
+             copy.sort((guitarA, guitarB) =>
+              guitarA.guitarPrice > guitarB.guitarPrice ? 1 : -1
+              );
+              setFilteredGuitars(copy);
+              
+             
+            } else if (parseInt(evt.target.value) === 2 ){
+              copy.sort((guitarA, guitarB) =>
+              guitarA.guitarPrice > guitarB.guitarPrice ? -1 : 1
+              );
+              setFilteredGuitars(copy);
+              
+           
+            
+          } else  {}
+          }}
+        >
+          <option key="placeHolder"  value="0">
+            Sort by...
+          </option>
+          <option key="guitar" value="1">
+            Price: low to high
+          </option>
+          <option key="placeholder" value="2">
+            Price: high to low
+          </option>
+          {/* {
+          filteredGuitars
+          .map((filteredGuitar) => {
+            return <div>{filteredGuitar.guitarName} - {filteredGuitar.price}</div>
+          })
+        } */}
+        </select>
+      </fieldset>
+
       <h2>My Guitars</h2>
 
       <article className="newGuitar">
