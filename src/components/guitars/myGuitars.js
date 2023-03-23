@@ -71,7 +71,7 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
 
   //TODO Handle purchase button function
   const handlePurchaseButtonClick = () => {
-    alert("Guitar has been purchased!  Congratulations you little rockstar!");
+    alert("Congratulations! Your guitar has been purchased!");
   };
 
   //!May need to change newGuitar to filteredGuitar?
