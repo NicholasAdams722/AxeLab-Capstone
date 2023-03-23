@@ -8,7 +8,7 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
   const [newGuitars, setNewGuitar] = useState([]);
   const [myGuitars, setMyGuitars] = useState([]);
   const [filteredGuitars, setFilteredGuitars] = useState([]);
- 
+
   const localGuitarUser = localStorage.getItem("guitar_user");
   const guitarUserObject = JSON.parse(localGuitarUser);
 
@@ -33,7 +33,6 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
     }
   }, [newGuitars]);
 
-  
   useEffect(() => {
     if (guitarTermState.length > 0) {
       console.log(myGuitars);
@@ -45,7 +44,7 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
       setFilteredGuitars(myGuitars);
     }
 
-    //! 
+    //!
   }, [guitarTermState, myGuitars]);
 
   const deleteButton = (customGuitar) => {
@@ -68,6 +67,11 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
         Delete
       </button>
     );
+  };
+
+  //TODO Handle purchase button function
+  const handlePurchaseButtonClick = () => {
+    alert("Guitar has been purchased!  Congratulations you little rockstar!");
   };
 
   //!May need to change newGuitar to filteredGuitar?
@@ -100,7 +104,16 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
 
                 <h3>Total Price</h3>
                 <li className="totalPrice">${filteredGuitar.guitarPrice}</li>
-                <button>Place Order</button>
+
+                <button
+                  onClick={(clickEvent) =>
+                    handlePurchaseButtonClick(clickEvent)
+                  }
+                  className="btn btn-primary"
+                >
+                  Purchase Guitar
+                </button>
+
                 {deleteButton(filteredGuitar)}
               </ul>
             </section>
