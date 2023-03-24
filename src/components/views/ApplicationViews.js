@@ -1,8 +1,6 @@
 //Import guitarBuilder function
 import { Outlet, Route, Routes } from "react-router-dom";
 import { GuitarBuilder } from "../guitars/guitarBuilder";
-import { DisplayMyGuitar } from "../guitars/myGuitars";
-import { GuitarSearch } from "../guitars/guitarSearch";
 import { GuitarContainer } from "../guitars/guitarContainer";
 import { CreateContact } from "../Contact/contact";
 export const ApplicationViews = () => {
