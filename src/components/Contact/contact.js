@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 //Create "contact us" info page
 export const CreateContact = () => {
- 
-
   const navigate = useNavigate();
 
   const localGuitarUser = localStorage.getItem("guitar_user");
