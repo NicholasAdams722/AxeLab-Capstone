@@ -117,7 +117,8 @@ export const GuitarBuilder = () => {
       <>
         <fieldset>
           <div className="form-group">
-            <label htmlFor="guitarName">Guitar Name:</label>
+        
+            <label htmlFor="guitarName"><h2>GUITAR NAME</h2></label>
             <input
               required
               autoFocus
@@ -134,7 +135,7 @@ export const GuitarBuilder = () => {
           </div>
         </fieldset>
 
-        <h2>Body Style</h2>
+        <h2>BODY STYLE</h2>
 
         <select
           value={newGuitar.bodyStyleId}
@@ -159,7 +160,7 @@ export const GuitarBuilder = () => {
           })}
         </select>
 
-        <h2>Body Wood Type</h2>
+        <h2>BODY WOOD TYPE</h2>
 
         <select
           value={newGuitar.bodyWoodTypeId}
@@ -186,7 +187,7 @@ export const GuitarBuilder = () => {
           })}
         </select>
 
-        <h2>Neck Shape</h2>
+        <h2>NECK SHAPE</h2>
 
         <select
           value={newGuitar.neckShapeId}
@@ -211,7 +212,7 @@ export const GuitarBuilder = () => {
           })}
         </select>
 
-        <h2>Neck Wood Type</h2>
+        <h2>NECK WOOD TYPE</h2>
 
         <select
           value={newGuitar.neckWoodTypeId}
@@ -236,7 +237,7 @@ export const GuitarBuilder = () => {
           })}
         </select>
 
-        <h2>Hardware</h2>
+        <h2>HARDWARE</h2>
 
         <select
           value={newGuitar.hardwareTypeId}
