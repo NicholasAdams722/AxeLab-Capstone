@@ -37,9 +37,9 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
     if (guitarTermState.length > 0) {
       console.log(myGuitars);
       const searchedGuitars = myGuitars.filter((myGuitar) =>
-        myGuitar.guitarName
-          .toLowerCase()
-          .startsWith(guitarTermState.toLowerCase())
+        myGuitar.guitarName && 
+        guitarTermState && 
+        myGuitar.guitarName.toLowerCase().startsWith(guitarTermState.toLowerCase())
       );
       setFilteredGuitars(searchedGuitars);
     } else {
