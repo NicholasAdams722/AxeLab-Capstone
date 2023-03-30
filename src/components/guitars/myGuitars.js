@@ -124,10 +124,10 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
 
       <h2>My Guitars</h2>
 
-      <article className="newGuitar">
+      <article className="newGuitars">
         {filteredGuitars.map((filteredGuitar) => {
           return (
-            <section className="newGuitar" key={filteredGuitar.id}>
+            <section className="newGuitarCard" key={filteredGuitar.id}>
               <header>{filteredGuitar.guitarName}</header>
               <ul>
                 <h3>Components</h3>
