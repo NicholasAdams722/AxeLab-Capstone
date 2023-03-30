@@ -1,15 +1,29 @@
 .navbar {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
 
-.navbar__item {
-    flex-basis: 20%;
-    list-style-type: none;
+.navbar__link {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    
 }
+
+.navbar__link:hover {
+    background-color: #111;
+  }
 
 .navbar__logout {
     margin-left: auto;
 }
 
+h2 {
+    color: white
+}

@@ -1,6 +1,7 @@
 //Import Use State and Use Navigate
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./guitarBuilder.css"
 //Export a Function called guitarForm
 
 export const GuitarBuilder = () => {
@@ -108,15 +109,16 @@ export const GuitarBuilder = () => {
       .then(() => {
         navigate("/myguitars");
       });
-  };
-
-  //TODO link all form fields to button and add an OnChange
-
-  return (
-    <>
+    };
+    
+    //TODO link all form fields to button and add an OnChange
+    
+    return (
+      <section className="guitarForm">
       <>
-        <fieldset>
-          <div className="form-group">
+      <>
+        
+          <div className="guitar-name">
         
             <label htmlFor="guitarName"><h2>GUITAR NAME</h2></label>
             <input
@@ -133,11 +135,11 @@ export const GuitarBuilder = () => {
               }}
             />
           </div>
-        </fieldset>
+        
 
         <h2>BODY STYLE</h2>
 
-        <select
+        <select required className="dropdown-field"
           value={newGuitar.bodyStyleId}
           onChange={(e) => {
             const copy = { ...newGuitar };
@@ -162,7 +164,7 @@ export const GuitarBuilder = () => {
 
         <h2>BODY WOOD TYPE</h2>
 
-        <select
+        <select required className="dropdown-field"
           value={newGuitar.bodyWoodTypeId}
           onChange={(e) => {
             const copy = { ...newGuitar };
@@ -173,7 +175,7 @@ export const GuitarBuilder = () => {
             copy.newGuitarPrice += selectedBodyWoodType.price
             update(copy);
           }}
-        >
+          >
           <option value="guitarWoodTypePlaceHolder">
             Select a Body Wood Type
           </option>
@@ -189,7 +191,7 @@ export const GuitarBuilder = () => {
 
         <h2>NECK SHAPE</h2>
 
-        <select
+        <select required className="dropdown-field"
           value={newGuitar.neckShapeId}
           onChange={(e) => {
             const copy = { ...newGuitar };
@@ -214,7 +216,7 @@ export const GuitarBuilder = () => {
 
         <h2>NECK WOOD TYPE</h2>
 
-        <select
+        <select required className="dropdown-field"
           value={newGuitar.neckWoodTypeId}
           onChange={(e) => {
             const copy = { ...newGuitar };
@@ -225,7 +227,7 @@ export const GuitarBuilder = () => {
             copy.newGuitarPrice += selectedNeckWoodType.price
             update(copy);
           }}
-        >
+          >
           <option value="guitarNeckWoodType">Select a Neck Wood Type</option>
 
           {neckWoodType.map((neckWoodType) => {
@@ -239,7 +241,7 @@ export const GuitarBuilder = () => {
 
         <h2>HARDWARE</h2>
 
-        <select
+        <select required className="dropdown-field"
           value={newGuitar.hardwareTypeId}
           onChange={(e) => {
             const copy = { ...newGuitar };
@@ -250,8 +252,8 @@ export const GuitarBuilder = () => {
             copy.newGuitarPrice += selectedHardwareType.price
             update(copy);
           }}
-        >
-          <option value="hardwareType">Select hardwareType</option>
+          >
+          <option value="hardwareType">Select Hardware</option>
 
           {hardwareType.map((hardwareType) => {
             return (
@@ -263,17 +265,16 @@ export const GuitarBuilder = () => {
         </select>
       </>
 
-
-
-      <>
         <button
           onClick={(clickEvent) => handleGuitarButtonClick(clickEvent)}
-          className="btn btn-primary"
-        >
+          className="btn-createGuitar"
+          >
           Create Guitar
         </button>
       </>
-    </>
+    
+
+          </section>
   );
 
   //Get data from API for dropdown selects

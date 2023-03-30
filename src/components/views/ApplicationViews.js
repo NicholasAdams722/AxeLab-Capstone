@@ -3,14 +3,15 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import { GuitarBuilder } from "../guitars/guitarBuilder";
 import { GuitarContainer } from "../guitars/guitarContainer";
 import { CreateContact } from "../Contact/contact";
+import { NavBar } from "../nav/NavBar";
 export const ApplicationViews = () => {
   return (
     <Routes>
       <Route
         path="/"
-        element={
-          <> <h1>AxeLab Guitar Builder</h1><div>Forge Your Axe</div><Outlet /></>}
+        
       >
+        
         <Route path="/myguitars" element={<GuitarContainer />} />
 
         <Route path="/builder" element={<GuitarBuilder />} />

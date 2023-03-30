@@ -1,1 +1,10 @@
 
+.newGuitarCard {
+  
+    background: white;
+    padding: 1rem;
+    border: 2px solid #777;
+    border-radius: 1rem;
+    max-width: 20em;
+    
+}
