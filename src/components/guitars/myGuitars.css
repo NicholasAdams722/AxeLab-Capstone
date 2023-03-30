@@ -1,10 +1,67 @@
 
 .newGuitarCard {
   
-    background: white;
+    background: rgb(116, 177, 191);
     padding: 1rem;
     border: 2px solid #777;
     border-radius: 1rem;
     max-width: 20em;
+    color: white;
+    text-align: center
     
+}
+
+.body-style-img {
+    border-radius: 1rem;
+    height: 200px;
+    width: 200
+}
+
+.newGuitars {
+
+    display: flex
+}
+
+.btn-purchase {
+    border: 10px;
+  background-color: rgb(193, 90, 5);
+  border-radius: .5rem;
+  width: 13em;
+  height: 3em;
+  color: white;
+}
+
+.btn-purchase:hover {
+    background-color: rgb(194, 145, 116);
+}
+
+.btn-delete {
+    border: 10px;
+  background-color: rgb(105, 52, 9);
+  border-radius: .5rem;
+  width: 13em;
+  height: 3em;
+  color: white;
+}
+
+.totalPrice-number {
+    
+    
+    font-size:x-large;
+}
+
+.guitarCard-name {
+    font-size: x-large;
+    text-align: center;
+    width: ;
+   
+    
+}
+
+ul {
+    list-style-type: none
+}
+
+.components {
+    text-align: left;
 }

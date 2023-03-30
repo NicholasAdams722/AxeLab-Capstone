@@ -12,11 +12,12 @@ fieldset {
 .form--login {
     display: inline-block;
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
 }
 
 .form--login > fieldset > input[type="email"] {
     width: 25em;
+
 }
 
 .label--login {
@@ -39,6 +40,7 @@ fieldset {
     border-radius: .25rem;
     -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    text-align: center;
 }
 
 .container--login {

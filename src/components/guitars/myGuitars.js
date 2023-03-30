@@ -51,7 +51,7 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
 
   const deleteButton = (customGuitar) => {
     return (
-      <button
+      <button className="btn-delete"
         onClick={() => {
           fetch(`http://localhost:8088/customGuitar/${customGuitar.id}`, {
             method: "DELETE",
@@ -128,8 +128,13 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
         {filteredGuitars.map((filteredGuitar) => {
           return (
             <section className="newGuitarCard" key={filteredGuitar.id}>
-              <header>{filteredGuitar.guitarName}</header>
-              <ul>
+
+                <img className="body-style-img" src={filteredGuitar.bodyStyle.image}/>
+
+
+
+              <header className="guitarCard-name">{filteredGuitar.guitarName}</header>
+              <ul className="components">
                 <h3>Components</h3>
                 <li className="bodyStyle">
                   Body Style - {filteredGuitar.bodyStyle.style}
@@ -146,15 +151,15 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
                 <li className="hardware">
                   Hardware - {filteredGuitar.hardwareType.type}
                 </li>
-
+<div className="total-price">
                 <h3>Total Price</h3>
-                <li className="totalPrice">${filteredGuitar.guitarPrice}</li>
-
+                <li className="totalPrice-number">${filteredGuitar.guitarPrice}</li>
+</div>
                 <button
                   onClick={(clickEvent) =>
                     handlePurchaseButtonClick(clickEvent)
                   }
-                  className="btn btn-primary"
+                  className="btn-purchase"
                 >
                   Purchase Guitar
                 </button>

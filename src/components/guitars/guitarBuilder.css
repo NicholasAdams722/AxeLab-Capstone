@@ -32,3 +32,7 @@ body {
   color: white;
 
 }
+
+.btn-createGuitar:hover {
+    background-color: rgb(194, 145, 116);
+}
