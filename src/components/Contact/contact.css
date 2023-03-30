@@ -6,3 +6,11 @@
     color: white;
   
   }
+
+  .send-message:hover {
+    background-color: rgb(194, 145, 116);
+}
+
+  .contact-form {
+    color: white
+  }

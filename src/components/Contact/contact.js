@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "./contact.css"
 //Create "contact us" info page
 export const CreateContact = () => {
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ export const CreateContact = () => {
   };
 
   return (
-    <fieldset>
+    <fieldset className="contact-form">
       <div className="form-group">
         <label htmlFor="emailAddress">EMAIL</label>
         <input
