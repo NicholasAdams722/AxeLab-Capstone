@@ -98,7 +98,7 @@ export const GuitarBuilder = () => {
     };
 
     //! This fetch POSTS the new object to the products array in the API
-    return fetch(`http://localhost:8088/customGuitar`, {
+    return fetch(`http://localhost:8088/customGuitars`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

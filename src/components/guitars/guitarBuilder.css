@@ -36,3 +36,8 @@ body {
 .btn-createGuitar:hover {
     background-color: rgb(194, 145, 116);
 }
+
+
+.newOrderName {
+    color: white;
+}
