@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import "./myGuitars.css";
+import { useNavigate } from "react-router-dom";
 
 //TODO fetch the new Guitar object from the database
 export const DisplayMyGuitar = ({ guitarTermState }) => {
@@ -9,12 +10,15 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
   const [myGuitars, setMyGuitars] = useState([]);
   const [filteredGuitars, setFilteredGuitars] = useState([]);
 
+
+
+  const navigate = useNavigate();
   const localGuitarUser = localStorage.getItem("guitar_user");
   const guitarUserObject = JSON.parse(localGuitarUser);
 
   useEffect(() => {
     fetch(
-      "http://localhost:8088/customGuitar?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
+      "http://localhost:8088/customGuitars?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
     )
       .then((response) => response.json())
       .then((customGuitarArray) => {
@@ -36,10 +40,13 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
   useEffect(() => {
     if (guitarTermState.length > 0) {
       console.log(myGuitars);
-      const searchedGuitars = myGuitars.filter((myGuitar) =>
-        myGuitar.guitarName && 
-        guitarTermState && 
-        myGuitar.guitarName.toLowerCase().startsWith(guitarTermState.toLowerCase())
+      const searchedGuitars = myGuitars.filter(
+        (myGuitar) =>
+          myGuitar.guitarName &&
+          guitarTermState &&
+          myGuitar.guitarName
+            .toLowerCase()
+            .startsWith(guitarTermState.toLowerCase())
       );
       setFilteredGuitars(searchedGuitars);
     } else {
@@ -51,13 +58,14 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
 
   const deleteButton = (customGuitar) => {
     return (
-      <button className="btn-delete"
+      <button
+        className="btn-delete"
         onClick={() => {
-          fetch(`http://localhost:8088/customGuitar/${customGuitar.id}`, {
+          fetch(`http://localhost:8088/customGuitars/${customGuitar.id}`, {
             method: "DELETE",
           }).then(() => {
             fetch(
-              "http://localhost:8088/customGuitar?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
+              "http://localhost:8088/customGuitars?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
             )
               .then((response) => response.json())
               .then((customGuitarArray) => {
@@ -72,8 +80,30 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
   };
 
   //TODO Handle purchase button function
-  const handlePurchaseButtonClick = () => {
+  const handlePurchaseButtonClick = (event, selectedGuitar) => {
+
+    event.preventDefault()
     alert(`Congratulations! Your guitar has been purchased`);
+
+    const purchasedGuitar = {
+      //Check if this matches with JSX
+      customGuitarId: selectedGuitar.id,
+    };
+
+
+
+
+    return fetch(`http://localhost:8088/newOrders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(purchasedGuitar),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        navigate("/myguitars");
+      });
   };
 
   //TODO Create dropdown to sort by price high-to-low and low-to-high
@@ -83,28 +113,23 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
         <select
           className="sortChoice"
           onChange={(evt) => {
-            const copy = [ ...filteredGuitars ];
-            
-           
-           if ( parseInt(evt.target.value) === 1 ) {
-             copy.sort((guitarA, guitarB) =>
-              guitarA.guitarPrice > guitarB.guitarPrice ? 1 : -1
-              );
-              setFilteredGuitars(copy);
-              
-             
-            } else if (parseInt(evt.target.value) === 2 ){
+            const copy = [...filteredGuitars];
+
+            if (parseInt(evt.target.value) === 1) {
               copy.sort((guitarA, guitarB) =>
-              guitarA.guitarPrice > guitarB.guitarPrice ? -1 : 1
+                guitarA.guitarPrice > guitarB.guitarPrice ? 1 : -1
               );
               setFilteredGuitars(copy);
-              
-           
-            
-          } else  {}
+            } else if (parseInt(evt.target.value) === 2) {
+              copy.sort((guitarA, guitarB) =>
+                guitarA.guitarPrice > guitarB.guitarPrice ? -1 : 1
+              );
+              setFilteredGuitars(copy);
+            } else {
+            }
           }}
         >
-          <option key="placeHolder"  value="0">
+          <option key="placeHolder" value="0">
             Sort by...
           </option>
           <option key="guitar" value="1">
@@ -128,12 +153,14 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
         {filteredGuitars.map((filteredGuitar) => {
           return (
             <section className="newGuitarCard" key={filteredGuitar.id}>
+              <img
+                className="body-style-img"
+                src={filteredGuitar.bodyStyle.image}
+              />
 
-                <img className="body-style-img" src={filteredGuitar.bodyStyle.image}/>
-
-
-
-              <header className="guitarCard-name">{filteredGuitar.guitarName}</header>
+              <header className="guitarCard-name">
+                {filteredGuitar.guitarName}
+              </header>
               <ul className="components">
                 <h3>Components</h3>
                 <li className="bodyStyle">
@@ -151,13 +178,15 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
                 <li className="hardware">
                   Hardware - {filteredGuitar.hardwareType.type}
                 </li>
-<div className="total-price">
-                <h3>Total Price</h3>
-                <li className="totalPrice-number">${filteredGuitar.guitarPrice}</li>
-</div>
+                <div className="total-price">
+                  <h3>Total Price</h3>
+                  <li className="totalPrice-number">
+                    ${filteredGuitar.guitarPrice}
+                  </li>
+                </div>
                 <button
                   onClick={(clickEvent) =>
-                    handlePurchaseButtonClick(clickEvent)
+                    handlePurchaseButtonClick(clickEvent, filteredGuitar)
                   }
                   className="btn-purchase"
                 >
