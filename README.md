@@ -1,4 +1,4 @@
-INTRODUCTION: This application was designed for a local luthier in the Nashville area who builds custom guitars for his clients.  
+INTRODUCTION: The name of this application is AxeLab.  This application was designed for a local luthier in the Nashville area who builds custom guitars for his clients.  
 
 PURPOSE & MOTIVATION: The purpose of this project was to design a user friendly website where users could select from a list of available options to create a custom instrument.  The user send the completed guitar to the builder to begin construction.  This would make it easier for the luthier to recieve orders and communicate with clients more effectively.
 
