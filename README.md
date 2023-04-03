@@ -3,7 +3,7 @@ INTRODUCTION: The name of this application is AxeLab.  This application was desi
 PURPOSE & MOTIVATION: The purpose of this project was to design a user friendly website where users could select from a list of available options to create a custom instrument.  The user send the completed guitar to the builder to begin construction.  This would make it easier for the luthier to recieve orders and communicate with clients more effectively.
 
 
-HOW DOE THE APPLICATION WORK?:  The application works by utilizing select dropdowns for each guitar component which can be chosen by the user to construct a completed instrument.  When the selections are made, the user can browse a list of completed guitars in the "my guitars" page.  There, the user can search for guitars by name and sort by price.  The user then has the option to purchase the guitar or delete it.  When the "purchase guitar button is selected, the guitar will be posted in the administrators "New Orders" page.  
+HOW DOES THE APPLICATION WORK?:  The application works by utilizing select dropdowns for each guitar component which can be chosen by the user to construct a completed instrument.  When the selections are made, the user can browse a list of completed guitars in the "my guitars" page.  There, the user can search for guitars by name and sort by price.  The user then has the option to purchase the guitar or delete it.  When the "purchase guitar button is selected, the guitar will be posted in the administrators "New Orders" page.  
 
 
 
