@@ -16,7 +16,7 @@ fieldset {
 }
 
 .form--login > fieldset > input[type="email"] {
-    width: 25em;
+    width: 50em;
 
 }
 
@@ -40,7 +40,7 @@ fieldset {
     border-radius: .25rem;
     -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    text-align: center;
+    text-align: left;
 }
 
 .container--login {
@@ -52,9 +52,10 @@ fieldset {
     z-index: 1;
     min-height: 25rem;
     min-width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
+    background-color:Black;
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+    
 }
 
 .button--close {

@@ -34,11 +34,11 @@ return(
         
         
         <ul className="navbar">
+              <li className="navLogo">AxeLab</li>
           {  guitarUserObject.isAdmin ? "" : <li className="navbar__item navbar__Builder">
                 <Link className="navbar__link" to=
                 "/builder">Builder</Link>
             </li> }
-
             <li className="navbar__item navbar__myGuitars">
                 <Link className="navbar__link" to="myGuitars" >My Guitars</Link>
             </li>

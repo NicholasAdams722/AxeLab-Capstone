@@ -7,7 +7,6 @@ export const AdminNav = () => {
 
     return (
         <ul className="navbar">
-          
 
             <li className="navbar__item navbar__myGuitars">
                 <Link className="navbar__link" to="/myGuitars" >All Orders</Link>
@@ -21,6 +20,7 @@ export const AdminNav = () => {
                     navigate("/", {replace: true})
                 }}>Logout</Link>
             </li>
+                <li className="navLogo">AxeLab</li>
         </ul>
     )
 }
