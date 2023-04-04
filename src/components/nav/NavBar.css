@@ -11,7 +11,7 @@
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px 18px;
     text-decoration: none;
     
 }
@@ -26,4 +26,11 @@
 
 h2 {
     color: white
+}
+
+.navLogo {
+    float: left;
+    font-size: 25px;
+    color: rgb(237, 135, 17);
+    padding: 10px;
 }

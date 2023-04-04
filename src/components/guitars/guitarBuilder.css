@@ -1,9 +1,6 @@
 .guitarForm {
   display: flex;
   flex-direction: column;
-  
-  
-  ox-shadow: 0px 2px 4px rgba(0.5, 0.5, 0.5, 0.5);
   padding: 100px;
   background-image: url("https://www.taylorguitars.com/sites/default/files/styles/hero_rotator_image/public/images/2021-10/taylor-custom-10416-ga-maple-hero-4-2017.jpeg?itok=8ABcwxF-");
   background-repeat: round;
@@ -11,7 +8,7 @@
 }
 body {
     background-color: black;
-   
+    
 }
 .dropdown-field {
   width: 40%;

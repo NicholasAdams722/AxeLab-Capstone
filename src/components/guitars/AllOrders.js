@@ -14,6 +14,9 @@ export const AllOrders = () => {
       });
   }, []);
 
+  const handleSpecsButtonClick = () => {
+    alert(`Congratulations! Your guitar has been purchased`);
+  }
   // Display all custom guitars from API
 
   return (
@@ -23,6 +26,7 @@ export const AllOrders = () => {
         return (
           <section className="newOrders" key={newOrder.id}>
             <article className="newOrderName">
+            <button>View Specs</button>
               New Order {newOrder.customGuitar.guitarName} has been placed.
             </article>
           </section>

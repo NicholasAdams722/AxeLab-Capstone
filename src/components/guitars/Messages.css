@@ -1,0 +1,20 @@
+.newMessageName {
+  color: white;
+  
+}
+
+.newMessage {
+  color: white;
+}
+
+.replyButton {
+  border: 10px;
+  background-color: rgb(193, 90, 5);
+  width: em;
+  height: 2em;
+  color: white;
+}
+
+.replyButton:hover {
+    background-color: rgb(194, 145, 116);
+}

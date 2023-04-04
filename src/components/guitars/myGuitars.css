@@ -19,7 +19,8 @@
 
 .newGuitars {
 
-    display: flex
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .btn-purchase {
