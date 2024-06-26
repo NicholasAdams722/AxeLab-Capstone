@@ -11,7 +11,7 @@ export const Register = (props) => {
     let navigate = useNavigate()
 
     const registerNewUser = () => {
-        return fetch("http://localhost:8088/users", {
+        return fetch("https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -33,7 +33,7 @@ export const Register = (props) => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        return fetch(`http://localhost:8088/users?email=${user.email}`)
+        return fetch(`https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/users?email=${user.email}`)
             .then(res => res.json())
             .then(response => {
                 if (response.length > 0) {
@@ -56,7 +56,7 @@ export const Register = (props) => {
     return (
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for guitar Korner</h1>
+                <h1 className="h3 mb-3 font-weight-normal">Please Register for AxeLab</h1>
                 <fieldset>
                     <label htmlFor="fullName"> Full Name </label>
                     <input onChange={updateUser}

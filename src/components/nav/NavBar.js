@@ -30,8 +30,7 @@ return(
 )
 } else {    
     return (
-        
-        
+    
         
         <ul className="navbar">
               <li className="navLogo">AxeLab</li>
