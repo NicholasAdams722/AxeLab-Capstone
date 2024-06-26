@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import "./myGuitars.css";
 import { useNavigate } from "react-router-dom";
+import { GuitarDetail } from "./GuitarDetail";
 
 //TODO fetch the new Guitar object from the database
 export const DisplayMyGuitar = ({ guitarTermState }) => {
@@ -18,7 +19,7 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
 
   useEffect(() => {
     fetch(
-      "http://localhost:8088/customGuitars?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
+      "https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/customGuitars?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
     )
       .then((response) => response.json())
       .then((customGuitarArray) => {
@@ -53,7 +54,7 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
       setFilteredGuitars(myGuitars);
     }
 
-    //!
+  
   }, [guitarTermState, myGuitars]);
 
   const deleteButton = (customGuitar) => {
@@ -61,11 +62,11 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
       <button
         className="btn-delete"
         onClick={() => {
-          fetch(`http://localhost:8088/customGuitars/${customGuitar.id}`, {
+          fetch(`https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/customGuitars/${customGuitar.id}`, {
             method: "DELETE",
           }).then(() => {
             fetch(
-              "http://localhost:8088/customGuitars?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
+              "https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/customGuitars?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
             )
               .then((response) => response.json())
               .then((customGuitarArray) => {
@@ -93,7 +94,7 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
 
 
 
-    return fetch(`http://localhost:8088/newOrders`, {
+    return fetch(`https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/newOrders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -150,52 +151,11 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
       <h2>My Guitars</h2>
 
       <article className="newGuitars">
-        {filteredGuitars.map((filteredGuitar) => {
+        {filteredGuitars.map((guitar) => {
           return (
-            <section className="newGuitarCard" key={filteredGuitar.id}>
-              <img
-                className="body-style-img"
-                src={filteredGuitar.bodyStyle.image}
-              />
-
-              <header className="guitarCard-name">
-                {filteredGuitar.guitarName}
-              </header>
-              <ul className="components">
-                <h3>Components</h3>
-                <li className="bodyStyle">
-                  Body Style - {filteredGuitar.bodyStyle.style}
-                </li>
-                <li className="bodyWoodType">
-                  Body Wood Type - {filteredGuitar.bodyWoodType.type}
-                </li>
-                <li className="neckShape">
-                  Neck Shape - {filteredGuitar.neckShape.shape}
-                </li>
-                <li className="neckWoodType">
-                  Neck Wood Type - {filteredGuitar.neckWoodType.type}
-                </li>
-                <li className="hardware">
-                  Hardware - {filteredGuitar.hardwareType.type}
-                </li>
-                <div className="total-price">
-                  <h3>Total Price</h3>
-                  <li className="totalPrice-number">
-                    ${filteredGuitar.guitarPrice}
-                  </li>
-                </div>
-                <button
-                  onClick={(clickEvent) =>
-                    handlePurchaseButtonClick(clickEvent, filteredGuitar)
-                  }
-                  className="btn-purchase"
-                >
-                  Purchase Guitar
-                </button>
-
-                {deleteButton(filteredGuitar)}
-              </ul>
-            </section>
+            <GuitarDetail key={guitar.id} filteredGuitar={guitar} handlePurchaseButtonClick={handlePurchaseButtonClick} deleteButton={deleteButton}/>
+            
+            
           );
         })}
       </article>
