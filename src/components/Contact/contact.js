@@ -32,7 +32,7 @@ export const CreateContact = () => {
     };
 
     //! This fetch POSTS the new object to the products array in the API
-    return fetch(`https://http:localhost:8088/contactUs`, {
+    return fetch(`http://localhost:8088/contactUs`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

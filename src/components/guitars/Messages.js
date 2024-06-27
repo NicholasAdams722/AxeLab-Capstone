@@ -8,7 +8,7 @@ const [newMessages, setNewMessage] = useState([])
     //use effect to get data from API
 
     useEffect(() => {
-        fetch("https://http:localhost:8088/contactUs")
+        fetch("http://localhost:8088/contactUs")
           .then((response) => response.json())
           .then((newMessageArray) => {
             setNewMessage(newMessageArray);
