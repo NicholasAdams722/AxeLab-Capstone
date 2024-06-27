@@ -8,7 +8,7 @@ const [newMessages, setNewMessage] = useState([])
     //use effect to get data from API
 
     useEffect(() => {
-        fetch("https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/contactUs")
+        fetch("https://http:localhost:8088/contactUs")
           .then((response) => response.json())
           .then((newMessageArray) => {
             setNewMessage(newMessageArray);

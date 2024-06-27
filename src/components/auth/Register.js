@@ -11,7 +11,7 @@ export const Register = (props) => {
     let navigate = useNavigate()
 
     const registerNewUser = () => {
-        return fetch("https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/users", {
+        return fetch("https://http:localhost:8088/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -33,7 +33,7 @@ export const Register = (props) => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        return fetch(`https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/users?email=${user.email}`)
+        return fetch(`https://http:localhost:8088/users?email=${user.email}`)
             .then(res => res.json())
             .then(response => {
                 if (response.length > 0) {

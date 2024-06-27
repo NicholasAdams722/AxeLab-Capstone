@@ -19,7 +19,7 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
 
   useEffect(() => {
     fetch(
-      "https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/customGuitars?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
+      "https://http:localhost:8088/customGuitars?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
     )
       .then((response) => response.json())
       .then((customGuitarArray) => {
@@ -62,11 +62,11 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
       <button
         className="btn-delete"
         onClick={() => {
-          fetch(`https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/customGuitars/${customGuitar.id}`, {
+          fetch(`https://http:localhost:8088/customGuitars/${customGuitar.id}`, {
             method: "DELETE",
           }).then(() => {
             fetch(
-              "https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/customGuitars?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
+              "https://http:localhost:8088/customGuitars?_expand=hardwareType&_expand=bodyStyle&_expand=bodyWoodType&_expand=neckShape&_expand=neckWoodType"
             )
               .then((response) => response.json())
               .then((customGuitarArray) => {
@@ -94,7 +94,7 @@ export const DisplayMyGuitar = ({ guitarTermState }) => {
 
 
 
-    return fetch(`https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/newOrders`, {
+    return fetch(`https://http:localhost:8088/newOrders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
