@@ -7,7 +7,7 @@ export const AllOrders = () => {
   const [newOrders, setNewOrder] = useState([]);
 
   useEffect(() => {
-    fetch("https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/newOrders?_expand=customGuitar")
+    fetch("http://localhost:8088/newOrders?_expand=customGuitar")
       .then((response) => response.json())
       .then((newOrderArray) => {
         setNewOrder(newOrderArray);

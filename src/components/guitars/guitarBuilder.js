@@ -34,7 +34,7 @@ export const GuitarBuilder = () => {
   //Body Style
 
   useEffect(() => {
-    fetch("https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/bodyStyles")
+    fetch("http://localhost:8088/bodyStyles")
       .then((response) => response.json())
       .then((bodyStyleArray) => {
         setBodyStyle(bodyStyleArray);
@@ -43,7 +43,7 @@ export const GuitarBuilder = () => {
 
   //Body Wood Type
   useEffect(() => {
-    fetch("https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/bodyWoodTypes")
+    fetch("http://localhost:8088/bodyWoodTypes")
       .then((response) => response.json())
       .then((bodyWoodTypeArray) => {
         setBodyWoodType(bodyWoodTypeArray);
@@ -53,7 +53,7 @@ export const GuitarBuilder = () => {
   //Neck Shape
 
   useEffect(() => {
-    fetch("https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/neckShapes")
+    fetch("http://localhost:8088/neckShapes")
       .then((response) => response.json())
       .then((neckShapeArray) => {
         setNeckShape(neckShapeArray);
@@ -63,7 +63,7 @@ export const GuitarBuilder = () => {
   //Neck Wood Type
 
   useEffect(() => {
-    fetch("https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/neckWoodTypes")
+    fetch("http://localhost:8088/neckWoodTypes")
       .then((response) => response.json())
       .then((neckWoodTypeArray) => {
         setNeckWoodType(neckWoodTypeArray);
@@ -73,7 +73,7 @@ export const GuitarBuilder = () => {
   //Hardware
 
   useEffect(() => {
-    fetch("https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/hardwareTypes")
+    fetch("http://localhost:8088/hardwareTypes")
       .then((response) => response.json())
       .then((hardwareArray) => {
         setHardware(hardwareArray);
@@ -98,7 +98,7 @@ export const GuitarBuilder = () => {
     };
 
     //! This fetch POSTS the new object to the products array in the API
-    return fetch(`https://axe-lab-api-heroku-d1df485bea79.herokuapp.com/customGuitars`, {
+    return fetch(`http://localhost:8088/customGuitars`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
